@@ -26,8 +26,6 @@ int main()
 	{
 		free(bytecode->code);
 		free(bytecode);
-    	free(evm->bc->code);
-    	free(evm->bc);
    		free(evm);
 		printf("[Error] Error while allocating EVM");
 		exit(EXIT_FAILURE);
