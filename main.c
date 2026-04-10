@@ -21,6 +21,18 @@ int main()
 		printf("[Error] Error while allocating EVM");
 		exit(EXIT_FAILURE);
 	}
+	evm->stack = malloc(sizeof(t_stack));
+	if (!evm->stack)
+	{
+		free(bytecode->code);
+		free(bytecode);
+    	free(evm->bc->code);
+    	free(evm->bc);
+   		free(evm);
+		printf("[Error] Error while allocating EVM");
+		exit(EXIT_FAILURE);
+	}
+
 	evm->bc = bytecode;
 	evm->pc = 0;
 	evm->stack->stack_pointer = 0;
