@@ -1,5 +1,7 @@
 #include "main.h"
 
+void 	init_dispatch_table(t_op_func *table);
+
 void	run_evm(t_evm *evm)
 {
 	uint8_t	opcode;
@@ -23,11 +25,19 @@ void	op_stop(t_evm *evm)
 
 void	op_add(t_evm *evm)
 {
+	int a = pop(evm->stack);
+	int b = pop(evm->stack);
+
+	int result = a + b;
+
+	push(evm->stack, result);
+
 	evm->pc += 1;
 }
 
 void	op_push1(t_evm *evm)
 {
+	push(evm->stack, evm->bc->code[evm->pc + 1]);
 	evm->pc += 2;
 }
 
